@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sergeij-root
+  namespace: argocd
+spec:
+  project: sergeij
+  source:
+    path: bootstrap/
+    repoURL: https://github.com/sergeij/argocd.git
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
