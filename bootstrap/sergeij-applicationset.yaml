@@ -7,7 +7,14 @@ spec:
   generators:
   - matrix:
       generators:
-      - clusters: {}
+      - list:
+          elements:
+          - cluster: staging-cluster
+            url: https://kubernetes.default.svc
+            env: staging
+          - cluster: production-cluster
+            url: https://192.168.1.223:64471
+            env: production
       - list:
           elements:
           - appName: nginx
@@ -15,7 +22,7 @@ spec:
     metadata:
       finalizers:
       - resources-finalizer.argocd.argoproj.io
-      name: '{{name}}-{{appName}}'
+      name: '{{cluster}}-{{appName}}'
       namespace: argocd
     spec:
       project: sergeij
@@ -23,12 +30,12 @@ spec:
         automated:
           selfHeal: true
       source:
-        path: 'applications/{{appName}}'
+        path: 'applications/{{appName}}/{{env}}'
         repoURL: https://github.com/sergeij/argocd.git
         plugin:
           env:
           - name: HELM_ARGS
-            value: -f values.yaml -f values-deployments-{{name}}.yaml
+            value: -f ../values.yaml -f values-deployments.yaml
       destination:
         server: '{{server}}'
         namespace: argocd

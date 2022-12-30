@@ -1,0 +1,7 @@
+name: Nginx
+version: 0.0.1
+dependencies:
+  - name: nginx
+    alias: nginx-production
+    version: 0.0.1
+    repository: file://../../../charts/nginx
