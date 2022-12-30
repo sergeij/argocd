@@ -1,3 +1,4 @@
 global:
   name: "nginx"
+  env: "dev"
   image: "nginx:stable"
