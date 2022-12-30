@@ -19,6 +19,10 @@ spec:
       source:
         path: '{{path}}'
         repoURL: https://github.com/sergeij/argocd.git
+        plugin:
+          env:
+          - name: HELM_ARGS
+            value: -f values.yaml -f values-deployments.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
