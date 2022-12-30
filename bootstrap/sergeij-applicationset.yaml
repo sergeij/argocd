@@ -18,6 +18,16 @@ spec:
       - list:
           elements:
           - appName: nginx
+  - matrix:
+      generators:
+      - list:
+          elements:
+          - cluster: staging-cluster
+            url: https://kubernetes.default.svc
+            env: staging
+      - list:
+          elements:
+          - appName: apache
   template:
     metadata:
       finalizers:

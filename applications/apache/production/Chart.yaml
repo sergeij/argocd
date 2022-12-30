@@ -1,0 +1,7 @@
+name: Apache
+version: 0.0.1
+dependencies:
+  - name: apache
+    alias: apache-production
+    version: 0.0.1
+    repository: file://../../../charts/apache

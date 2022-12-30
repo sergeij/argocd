@@ -4,4 +4,4 @@ dependencies:
   - name: apache
     alias: apache-staging
     version: 0.0.1
-    repository: file://../../charts/apache
+    repository: file://../../../charts/apache
