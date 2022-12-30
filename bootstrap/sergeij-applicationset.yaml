@@ -28,7 +28,7 @@ spec:
         plugin:
           env:
           - name: HELM_ARGS
-            value: -f values.yaml -f values-deployments.yaml
+            value: -f values.yaml -f values-deployments-{{name}}.yaml
       destination:
         server: '{{server}}'
         namespace: argocd

@@ -1,0 +1,3 @@
+nginx-production:
+  image: "nginx:stable"
+  env: "production"
