@@ -2,12 +2,7 @@
 
 ### Install minikube (https://minikube.sigs.k8s.io/docs/start/)
 
-```bash
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-arm64
-sudo install minikube-darwin-arm64 /usr/local/bin/minikube
-```
-
-### Install Docker Desktop (https://docs.docker.com/desktop/install/mac-install/)
+### Install Docker Desktop (https://docs.docker.com/desktop/install)
 
 ### Start minikube clusters
 
@@ -21,8 +16,8 @@ minikube start -p minikube2 --apiserver-ips=192.168.1.223
 ### Add clusters to Argo
 
 ```bash
-argocd cluster add --label env=staging --insecure minikube --name staging-cluster --upsert
-argocd cluster add --label env=production --insecure minikube2 --name production-cluster --upsert 
+argocd cluster add --label env=staging --in-cluster minikube --name staging-cluster --upsert
+argocd cluster add --label env=production --insecure minikube2 --name production-cluster --upsert
 ```
 
 ### Bootstrap cluster dependencies and applicationset
