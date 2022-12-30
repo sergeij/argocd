@@ -5,26 +5,27 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/sergeij/argocd.git
-      revision: HEAD
-      directories:
-      - path: applications/*
+  - matrix:
+      generators:
+      - clusters: {}
+      - list:
+          elements:
+          - appName: nginx
   template:
     metadata:
       finalizers:
       - resources-finalizer.argocd.argoproj.io
-      name: '{{path.basename}}'
+      name: '{{name}}-{{appName}}'
       namespace: argocd
     spec:
       project: sergeij
       source:
-        path: '{{path}}'
+        path: 'applications/{{appName}}'
         repoURL: https://github.com/sergeij/argocd.git
         plugin:
           env:
           - name: HELM_ARGS
             value: -f values.yaml -f values-deployments.yaml
       destination:
-        server: https://kubernetes.default.svc
+        server: '{{server}}'
         namespace: argocd
