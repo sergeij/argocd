@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.name | default .Values.global.name }} 
-  namespace: {{ .Values.name | default .Values.global.name }}
+  namespace: {{ .Values.name | default .Values.global.name }}-{{ .Values.env | default .Values.global.env }}
 spec:
   selector:
     matchLabels:

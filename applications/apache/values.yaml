@@ -1,3 +1,4 @@
 global:
   name: "apache"
+  env: ""
   image: "php:7.4-apache-bullseye"

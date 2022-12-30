@@ -19,6 +19,9 @@ spec:
       namespace: argocd
     spec:
       project: sergeij
+      syncPolicy:
+        automated:
+          selfHeal: true
       source:
         path: 'applications/{{appName}}'
         repoURL: https://github.com/sergeij/argocd.git
