@@ -37,5 +37,5 @@ spec:
           - name: HELM_ARGS
             value: -f ../values.yaml -f values-deployments.yaml
       destination:
-        server: '{{server}}'
+        server: '{{url}}'
         namespace: argocd
