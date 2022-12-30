@@ -23,7 +23,8 @@ argocd cluster add --label env=production --insecure minikube2 --name production
 ### Bootstrap cluster dependencies and applicationset
 
 ```bash
-argocd login argocd.sco.ro
+kubectl --context=minikube -n argocd port-forward svc/argocd-server 8080:443
+argocd login localhost:8080 --insecure
 argocd repo add https://github.com/sergeij/argocd.git
 argocd app create cluster-dependencies --repo https://github.com/sergeij/argocd.git --path bootstrap --dest-namespace sergeij --dest-server https://kubernetes.default.svc
 ```
