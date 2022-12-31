@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name | default .Values.global.name }} 
+  namespace: {{ .Values.name | default .Values.global.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name | default .Values.global.name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name | default .Values.global.name }}
+    spec:
+      containers:
+      - name: {{ .Values.name | default .Values.global.name }}
+        image: {{ .Values.image | default .Values.global.image }}
+        ports:
+        - containerPort: 6379
+      serviceAccountName: {{ .Values.name | default .Values.global.name }}

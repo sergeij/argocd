@@ -1,0 +1,6 @@
+name: Redis
+version: 0.0.1
+dependencies:
+  - name: redis
+    version: 0.0.1
+    repository: file://../../charts/redis

@@ -1,0 +1,3 @@
+global:
+  name: "redis"
+  image: "redis:7.0.7-bullseye"

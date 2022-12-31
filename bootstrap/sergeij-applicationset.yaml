@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
 spec:
   generators:
+  # Deploy Nginx to staging and production clusters
   - matrix:
       generators:
       - list:
@@ -18,6 +19,7 @@ spec:
       - list:
           elements:
           - appName: nginx
+  # Deploy Apache to staging cluster
   - matrix:
       generators:
       - list:
@@ -28,6 +30,26 @@ spec:
       - list:
           elements:
           - appName: apache
+  # Deploy Redis to all clusters and override template to use the same Helm values for all clusters
+  - clusters: {}
+      template:
+        metadata:
+          finalizers:
+          - resources-finalizer.argocd.argoproj.io
+          name: '{{name}}-redis'
+          namespace: argocd
+        spec:
+          project: "sergeij"
+          source:
+            path: 'applications/redis'
+            repoURL:https://github.com/sergeij/argocd.git
+            plugin:
+              env:
+              - name: HELM_ARGS
+                value: -f values.yaml
+          destination:
+            server: '{{server}}'
+            namespace: argocd    
   template:
     metadata:
       finalizers:
