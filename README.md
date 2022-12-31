@@ -2,7 +2,7 @@
 
 ### Install minikube (https://minikube.sigs.k8s.io/docs/start/)
 
-### Install Docker Desktop (https://docs.docker.com/desktop/install)
+### Install Docker (https://docs.docker.com/get-docker/)
 
 ### Start minikube clusters
 
