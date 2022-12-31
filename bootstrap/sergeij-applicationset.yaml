@@ -36,7 +36,7 @@ spec:
         metadata:
           finalizers:
             - resources-finalizer.argocd.argoproj.io
-          name: "{{name}}-redis"
+          name: '{{name}}-redis'
           namespace: argocd
         spec:
           project: sergeij
