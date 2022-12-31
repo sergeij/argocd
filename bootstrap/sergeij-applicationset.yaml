@@ -14,7 +14,7 @@ spec:
             url: https://kubernetes.default.svc
             env: staging
           - cluster: production-cluster
-            url: https://192.168.1.223:64471
+            url: https://192.168.1.227:65434
             env: production
       - list:
           elements:
