@@ -28,6 +28,25 @@ spec:
       - list:
           elements:
           - appName: apache
+  - clusters:
+      template:
+        metadata:
+          finalizers:
+            - resources-finalizer.argocd.argoproj.io
+          name: "{{name}}-redis"
+          namespace: argocd
+        spec:
+          project: sergeij
+          source:
+            path: applications/redis
+            repoURL: https://github.com/sergeij/argocd.git
+            plugin:
+              env:
+                - name: HELM_ARGS
+                  value: -f values.yaml
+          destination:
+            server: "{{server}}"
+            namespace: argocd
   template:
     metadata:
       finalizers:
